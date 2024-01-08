@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -9,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     private Transform _thisTransform;
     private Vector2 _startPosition;
     private Vector2 _endPosition;
-    private float _speed = 0.01f;
+    private float _speed = 0.02f;
     void Start()
     {
         _thisTransform = this.transform;
@@ -30,4 +28,14 @@ public class PlayerMove : MonoBehaviour
             _rb.AddForce(-_pullDirection * _speed, ForceMode2D.Impulse);
         }
     }
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(1 << collision.gameObject.layer);
+        Debug.Log(LayerMask.GetMask("Wall"));
+        if (1 << collision.gameObject.layer == LayerMask.GetMask("Wall"))
+        {
+            _rb.velocity = new Vector2(-_rb.velocity.x, _rb.velocity.y);
+        }
+    }*/
 }
